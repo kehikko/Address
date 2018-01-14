@@ -2,7 +2,7 @@
 commands:
   countries:populate:from_csv:
     class: Address\Console
-    method: createFromCsv
+    method: countriesPopulateFromCsv
     description: Populate country database from CSV file
     arguments:
       csv_file:
@@ -28,6 +28,10 @@ commands:
         long_name: --region
         description: Region in the world
         action: StoreString
+  postcodes:populate:FI:
+    class: Address\Console
+    method: postcodesPopulateFI
+    description: Populate Finnish postcode entries from posti.fi
   test:
     class: Address\Console
     description: Testing

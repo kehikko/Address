@@ -46,6 +46,15 @@ class Postcode
 		return substr($this->postcode, 0, 2);
 	}
 
+	/**
+	 * Get country object for this postcode.
+	 * @return \Address\Country Country object or null on errors
+	 */
+	public function getCountry()
+	{
+		return Country::find($this->getCountryCode());
+	}
+
 	public function getLocality()
 	{
 		return $this->locality;

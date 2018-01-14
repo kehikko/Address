@@ -41,6 +41,31 @@ class Country
 		}
 	}
 
+	public function getName()
+	{
+		return $this->name;
+	}
+
+	public function getNumeric()
+	{
+		return $this->numeric3;
+	}
+
+	public function getAlpha2()
+	{
+		return $this->alpha2;
+	}
+
+	public function getAlpha3()
+	{
+		return $this->alpha3;
+	}
+
+	public function getRegion()
+	{
+		return $this->region;
+	}
+
 	/**
 	 * Find by country code.
 	 *

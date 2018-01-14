@@ -9,7 +9,7 @@ class Countries extends \Core\Module
 		parent::__construct();
 	}
 
-	public static function createFromCsv($file, array $columns, $delimiter = ',', $enclosure = '"', $escape = '\\')
+	public static function fromCsv($file, array $columns, $delimiter = ',', $enclosure = '"', $escape = '\\')
 	{
 		/* try to open csv */
 		$f = fopen($file, 'r');
