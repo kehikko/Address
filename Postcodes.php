@@ -77,4 +77,20 @@ class Postcodes
 		$em->flush();
 		\kernel::log(LOG_INFO, 'postcodes populated for country: ' . $country->getName() . ', total found: ' . $total . ', added new: ' . $new);
 	}
+
+	/**
+	 * Find postcodes by optional country code and partial postcode.
+	 */
+	public static function find($country_code = null, $postcode = null)
+	{
+		$qb = \kernel::getInstance()->getEntityManager()->createQueryBuilder();
+		$qb->select('i')->from('Address\Postcode', 'i');
+		if ($country_code)
+		{
+			$qb->where('i.postcode LIKE :code');
+			$q = $postcode ? $country_code . $postcode : $country_code;
+			$qb->setParameter('code', $q . '%');
+		}
+		return $qb->getQuery()->getResult();
+	}
 }

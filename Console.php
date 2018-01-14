@@ -89,16 +89,16 @@ class Console extends \Core\Module
 		$em = \kernel::getInstance()->getEntityManager();
 		for ($i = 0; $i < count($results); $i++)
 		{
-			$postcode = $results[$i]['postcode'];
+			$postcode = trim($results[$i]['postcode']);
 			$c        = Postcode::find('FI', $postcode);
 			if (!$c)
 			{
 				$c = new Postcode('FI', $postcode);
 				$n++;
 			}
-			$locality = utf8_encode($results[$i]['postcode_fi_name']);
-			$city     = utf8_encode($results[$i]['municipal_name_fi']);
-			$state    = utf8_encode($results[$i]['ad_area_fi']);
+			$locality = trim(utf8_encode($results[$i]['postcode_fi_name']));
+			$city     = trim(utf8_encode($results[$i]['municipal_name_fi']));
+			$state    = trim(utf8_encode($results[$i]['ad_area_fi']));
 			$c->setLocality($locality);
 			$c->setCity($city);
 			$c->setState($state);
@@ -111,6 +111,7 @@ class Console extends \Core\Module
 
 	static public function test()
 	{
+		$x = new \Data\Group();
 		$p = Postcode::find('FI', 82730);
 		$c = $p->getCountry();
 		echo $p->getCountryCode() . ' ' . $p->getPostcode() . ":\n";
