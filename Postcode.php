@@ -30,7 +30,7 @@ class Postcode
 		{
 			if (strlen($postcode) < 3 || strlen($country_code) != 2)
 			{
-				throw new Exception('invalid postcode/country code when creating new postcode entry, postcode: ' . $postcode . ', country code: ' . $country_code);
+				throw new \Exception('invalid postcode/country code when creating new postcode entry, postcode: ' . $postcode . ', country code: ' . $country_code);
 			}
 			$this->postcode = $country_code . $postcode;
 		}

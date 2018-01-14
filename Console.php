@@ -6,6 +6,14 @@ class Console extends \Core\Module
 {
 	public static function countriesPopulateFromCsv($command, $args, $options)
 	{
+		$required = array('name', 'numeric', 'alpha2', 'alpha3', 'region');
+		foreach ($required as $rq)
+		{
+			if (!isset($options[$rq]))
+			{
+				throw new \Exception('mandatory option not given: ' . $rq);
+			}
+		}
 		$columns = array(
 			'name'    => $options['name'],
 			'numeric' => $options['numeric'],
@@ -14,6 +22,36 @@ class Console extends \Core\Module
 			'region'  => $options['region'],
 		);
 		Countries::fromCsv($args['csv_file'], $columns);
+	}
+
+	public static function postcodesPopulateFromCsv($command, $args, $options)
+	{
+		$required = array('country', 'postcode', 'city');
+		foreach ($required as $rq)
+		{
+			if (!isset($options[$rq]))
+			{
+				throw new \Exception('mandatory option not given: ' . $rq);
+			}
+		}
+
+		$country = Country::find($options['country']);
+		if (!$country)
+		{
+			throw new \Exception('country code not found from countries database: ' . $options['country']);
+		}
+
+		$columns = array(
+			'postcode' => $options['postcode'],
+			'locality' => isset($options['locality']) ? $options['locality'] : $options['city'],
+			'city'     => $options['city'],
+		);
+		if (isset($options['state']))
+		{
+			$columns['state'] = $options['state'];
+		}
+
+		Postcodes::fromCsv($country, $args['csv_file'], $columns);
 	}
 
 	public static function postcodesPopulateFI($command, $args, $options)

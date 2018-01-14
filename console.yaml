@@ -10,23 +10,51 @@ commands:
     options:
       name:
         long_name: --name
-        description: Country name
+        description: Get country name from this column
         action: StoreString
       numeric:
         long_name: --numeric
-        description: ISO 3166-1 numeric code
+        description: Get ISO 3166-1 numeric code from this column
         action: StoreString
       alpha2:
         long_name: --alpha-2
-        description: ISO 3166-1 alpha-2 code
+        description: Get ISO 3166-1 alpha-2 code from this column
         action: StoreString
       alpha3:
         long_name: --alpha-3
-        description: ISO 3166-1 alpha-3 code
+        description: Get ISO 3166-1 alpha-3 code from this column
         action: StoreString
       region:
         long_name: --region
-        description: Region in the world
+        description: Get region in the world from this column
+        action: StoreString
+  postcodes:populate:from_csv:
+    class: Address\Console
+    method: postcodesPopulateFromCsv
+    description: Populate postcode database from CSV file
+    arguments:
+      csv_file:
+        description: Read postcodes from this CSV file
+    options:
+      country:
+        long_name: --country
+        description: Country code (ISO 3166-1 numeric, alpha-2 or alpha-3)
+        action: StoreString
+      postcode:
+        long_name: --postcode
+        description: Get postcode from this column
+        action: StoreString
+      locality:
+        long_name: --locality
+        description: Get locality from this column, same as city if not given
+        action: StoreString
+      city:
+        long_name: --city
+        description: Get city (municipality) from this column
+        action: StoreString
+      state:
+        long_name: --state
+        description: Get state from this column, optional
         action: StoreString
   postcodes:populate:FI:
     class: Address\Console

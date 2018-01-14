@@ -2,13 +2,8 @@
 
 namespace Address;
 
-class Countries extends \Core\Module
+class Countries
 {
-	public function __construct()
-	{
-		parent::__construct();
-	}
-
 	public static function fromCsv($file, array $columns, $delimiter = ',', $enclosure = '"', $escape = '\\')
 	{
 		/* try to open csv */
