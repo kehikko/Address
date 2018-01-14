@@ -1,5 +1,33 @@
 
 commands:
+  countries:populate:from_csv:
+    class: Address\Console
+    method: createFromCsv
+    description: Populate country database from CSV file
+    arguments:
+      csv_file:
+        description: Read countries from this CSV file
+    options:
+      name:
+        long_name: --name
+        description: Country name
+        action: StoreString
+      numeric:
+        long_name: --numeric
+        description: ISO 3166-1 numeric code
+        action: StoreString
+      alpha2:
+        long_name: --alpha-2
+        description: ISO 3166-1 alpha-2 code
+        action: StoreString
+      alpha3:
+        long_name: --alpha-3
+        description: ISO 3166-1 alpha-3 code
+        action: StoreString
+      region:
+        long_name: --region
+        description: Region in the world
+        action: StoreString
   test:
     class: Address\Console
     description: Testing

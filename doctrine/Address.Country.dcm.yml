@@ -1,0 +1,21 @@
+Address\Country:
+  type: entity
+  table: countries
+  id:
+    numeric3:
+      type: integer
+  fields:
+    name:
+      type: string
+      nullable: false
+    alpha2:
+      type: string
+      length: 2
+      nullable: false
+    alpha3:
+      type: string
+      length: 3
+      nullable: false
+    region:
+      type: string
+      nullable: false

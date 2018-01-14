@@ -81,8 +81,7 @@ class Postcode
 	 */
 	public static function find(string $country_code, string $postcode)
 	{
-		/* find invite */
-		$qb = kernel::getInstance()->getEntityManager()->createQueryBuilder();
+		$qb = \kernel::getInstance()->getEntityManager()->createQueryBuilder();
 		$qb->select('i')
 			->from('Address\Postcode', 'i')
 			->where('i.postcode = :postcode')
