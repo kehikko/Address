@@ -1,0 +1,6 @@
+
+commands:
+  test:
+    class: Address\Console
+    description: Testing
+    method: test

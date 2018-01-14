@@ -1,0 +1,18 @@
+Address\Postcode:
+  type: entity
+  table: postcode
+  id:
+    # postcode prepended with ISO 3166-1 alpha-2 country code
+    postcode:
+      type: string
+      length: 16
+  fields:
+    locality:
+      type: string
+      nullable: false
+    city:
+      type: string
+      nullable: false
+    state:
+      type: string
+      nullable: true
