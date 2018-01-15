@@ -56,7 +56,7 @@ class Countries
 		}
 
 		/* write to database */
-		$em = \kernel::getInstance()->getEntityManager();
+		$em = get_entity_manager();
 		foreach ($countries as $country)
 		{
 			$c = Country::find($country['numeric']);

@@ -59,7 +59,7 @@ class Postcodes
 		$country_code = $country->getAlpha2();
 		$total        = 0;
 		$new          = 0;
-		$em           = \kernel::getInstance()->getEntityManager();
+		$em           = get_entity_manager();
 		foreach ($postcodes as $postcode)
 		{
 			$p = Postcode::find($country_code, $postcode['postcode']);
@@ -83,7 +83,7 @@ class Postcodes
 	 */
 	public static function find($country_code = null, $postcode = null)
 	{
-		$qb = \kernel::getInstance()->getEntityManager()->createQueryBuilder();
+		$qb = get_entity_manager()->createQueryBuilder();
 		$qb->select('i')->from('Address\Postcode', 'i');
 		if ($country_code)
 		{

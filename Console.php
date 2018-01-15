@@ -86,7 +86,7 @@ class Console extends \Core\Module
 			return false;
 		}
 		$n  = 0;
-		$em = \kernel::getInstance()->getEntityManager();
+		$em = get_entity_manager();
 		for ($i = 0; $i < count($results); $i++)
 		{
 			$postcode = trim($results[$i]['postcode']);
@@ -111,7 +111,6 @@ class Console extends \Core\Module
 
 	static public function test()
 	{
-		$x = new \Data\Group();
 		$p = Postcode::find('FI', 82730);
 		$c = $p->getCountry();
 		echo $p->getCountryCode() . ' ' . $p->getPostcode() . ":\n";
